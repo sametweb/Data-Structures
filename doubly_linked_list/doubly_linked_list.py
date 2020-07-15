@@ -83,7 +83,7 @@ class DoublyLinkedList:
         # create instance of ListNode with value
         new_node = ListNode(value)
         # Check if DLL is empty. If it is:
-        if self.length == 0:
+        if not self.tail and not self.head:
             # set head and tail to the new node instance
             self.head = new_node
             self.tail = new_node
@@ -132,7 +132,7 @@ class DoublyLinkedList:
         # if node is head already
         if node is self.head:
             # return None
-            return None
+            return
         # if node is tail
         if node is self.tail:
             # set node.prev as tail as the tail is being moved
@@ -142,7 +142,7 @@ class DoublyLinkedList:
         # If 'node' is not tail, meaning if it has a next node
         if node.next is not None:
             # Connect the nodes in each side of 'node' backwards
-            node.next.prev = node.prev
+            node.next.prev = node.prev 
         # Set node.prev to None because head's prev is always None
         node.prev = None
         # Set node.next to current head
@@ -185,9 +185,10 @@ class DoublyLinkedList:
     order of the other elements of the List.
     """
     def delete(self, node):
-        if self.length == 0:
+        if not self.head and not self.tail:
             return None
-        elif self.length == 1:
+
+        elif self.head is self.tail:
             self.head = None
             self.tail = None
         else:
