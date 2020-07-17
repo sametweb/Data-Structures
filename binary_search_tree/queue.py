@@ -31,12 +31,10 @@ class Queue:
         return self.storage.tail.get_value()
 
     def dequeue(self):
-        if self.size < 1:
-            return None
+        if self.size == 0:
+            return
         self.size -= 1
-        value = self.storage.head.get_value()
-        self.storage.remove_head()
-        return value
+        return self.storage.remove_head()
 
         # # Array solution
         # class Queue:
